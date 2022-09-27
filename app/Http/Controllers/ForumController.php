@@ -20,4 +20,10 @@ class ForumController extends Controller
 
     return view('forums.index', compact('forums'));
 	}
+
+   public function show(Forum $forum)  // Con esto estamos inyectando el Foro completo
+	{
+		dd($forum);
+	}
+
 }

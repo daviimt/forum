@@ -12,9 +12,9 @@
 */
 
 Route::get('/', 'ForumController@index');
+Route::get('/forums/{forum}','ForumController@show');
 
 Route::get('controlador/{name}','PruebaController@nombre');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-

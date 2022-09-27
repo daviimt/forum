@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Forum extends Model
 {
     protected $table='forums';
-
+    
     protected $fillable=['id','name','description'];
+
+
+    //Relacion en la base de datos 1:M
+    //Nombre de la funcion recomendado: nombre de lo que va a devolver y si es uno o mas resultados
+    public function posts(){
+    	return $this->hasMany(Post::class);
+    }
+
 }
