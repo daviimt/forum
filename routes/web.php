@@ -14,6 +14,7 @@
 Route::get('/', 'ForumController@index');
 Route::get('/forums/{forum}','ForumController@show');
 Route::get('/posts/{post}', 'PostController@show');
+Route::post('/forums', 'ForumController@store');
 
 Route::get('controlador/{name}','PruebaController@nombre');
 Auth::routes();

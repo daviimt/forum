@@ -33,4 +33,22 @@ class ForumController extends Controller
       
 	}
 
+	public function store()
+	{
+      $this->validate(request(), [
+         'name' => 'required|max:100|unique:forums', // forums es la tabla dónde debe ser único
+         'description' => 'required|max:500',
+      ],
+      [
+         'name.required' => __("El campo NAME es requerido!!!"),
+         'name.unique' => __("El campo NAME no puede estar repetido!!!")
+      ]
+   );
+
+		Forum::create(request()->all());
+		// La siguiente línea nos devuelve a la url anterior (si es que existe), o a la raíz
+		// y manda un mensaje, mediante una sesión flash, de éxito
+		return back()->with('message', ['success', __("Foro creado correctamente")]); 
+	}
+
 }

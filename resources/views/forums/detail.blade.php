@@ -8,7 +8,7 @@
 			{{ __("Posts del foro :name", ['name' => $forum->name]) }}
 		</h1>
 
-		<a href="/forum/public" class="btn btn-info pull-right">
+		<a href="/" class="btn btn-info pull-right">
 			{{ __("Volver al listado de los foros") }}
 		</a>
 
