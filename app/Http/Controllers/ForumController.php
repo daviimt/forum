@@ -29,8 +29,8 @@ class ForumController extends Controller
       //Select * from user
 		$posts = $forum->posts()->with(['owner'])->paginate(2);
       return view('forums.detail', compact('forum','posts'));
-      dd($posts);
-      
+      //dd($posts);
+
 	}
 
 	public function store()

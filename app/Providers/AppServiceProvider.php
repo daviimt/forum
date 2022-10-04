@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        
     }
 
     /**
@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Blade::if('Logged', function() {
+            // “auth” es el sistema de autenticación que estamos utilizando
+                // y “check” nos dice si el usuario está o no autentificado
+            return auth()->check();
+    });
     }
 }
