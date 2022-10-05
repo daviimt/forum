@@ -18,7 +18,7 @@ class PostController extends Controller
 
 	public function store(PostRequest $post_request) 
 	{
-		
+		$post_request->merge(['user_id' => auth()->id()]);
 		Post::create($post_request->input()); // Esto coge todos los datos que vienen vía Post y los inserta
 		return back()->with('message', ['success', __('Post creado correctamente')]);
 	
