@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Reply extends Model
 {
@@ -12,6 +13,16 @@ class Reply extends Model
 
     // Para poder acceder al Foro desde esta tabla crearemos un atributo extra
     protected  $appends = ['forum'];
+
+    protected static function boot() {
+        parent::boot();
+
+        static::creating(function($reply) {
+            if( ! App::runningInConsole() ) {
+                $reply->user_id = auth()->id();
+            }
+        });
+    }	
 
     public function post(){
     	return $this->belongsTo(Post::class, 'post_id');
