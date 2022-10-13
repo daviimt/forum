@@ -16,12 +16,15 @@ class Post extends Model
 
         static::creating(function($post) {
             if( ! App::runningInConsole() ) {
-            $post->user_id = auth()->id();
+                $post->user_id = auth()->id();
+                $post->slug = str_slug($post->title,'-');
             }
         });
     }
 
-
+    public function getRouteKeyName() {
+        return 'slug';
+    }
     public function forum(){
     	return $this->belongsTo(Forum::class, 'forum_id');
     }

@@ -29,9 +29,9 @@ class CreatePostsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('posts', function (Blueprint $table) {
-            $table->string('slug');
-        });
+        //Schema::table('posts', function (Blueprint $table) {
+        //    $table->string('slug');
+        //});
 
     }
 

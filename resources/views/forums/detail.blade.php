@@ -21,7 +21,7 @@
 
 	        <div class="panel panel-default">
 	            <div class="panel-heading">
-	            	<a href="../posts/{{ $post->id }}"> {{ $post->title }} </a>
+	            	<a href="../posts/{{ $post->slug}}"> {{ $post->title }} </a>
 	            	<span class="pull-right">
 	            		{{ __("Owner") }}: {{ $post->owner->name }}
 	            	</span>
