@@ -18,6 +18,8 @@ class CreateForumsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('name');
+            $table->string('slug');
+            $table->index('slug');
             $table->text('description');
 
         });

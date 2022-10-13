@@ -8,7 +8,7 @@ class Forum extends Model
 {
     protected $table='forums';
     
-    protected $fillable=['id','name','description'];
+    protected $fillable=['id','name','description','slug'];
 
 
     //Relacion en la base de datos 1:M

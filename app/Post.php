@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\App;
 class Post extends Model
 {
     protected $table='posts';
-    protected $fillable=['id','user_id','forum_id','title','description'];
+    protected $fillable=['id','user_id','forum_id','title','description','slug'];
     //'forum_id es la clave foranea de la tabla post'
 
     protected static function boot() {

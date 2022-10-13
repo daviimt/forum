@@ -23,9 +23,16 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('forum_id');     // Creamos la columna que hará de clave foránea
             $table->foreign('forum_id')->references('id')->on('forums');    // Definición de la clave foránea
             $table->string('title');     		// Título del Post
+            $table->string('slug');
+            $table->index('slug');
             $table->text('description');    	// Descripción del Post
             $table->timestamps();
         });
+
+        Schema::table('posts', function (Blueprint $table) {
+            $table->string('slug');
+        });
+
     }
 
     /**
