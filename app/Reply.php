@@ -24,6 +24,10 @@ class Reply extends Model
         });
     }	
 
+    public function isAuthor() {
+        return $this->autor->id === auth()->id();
+    }
+
     public function post(){
     	return $this->belongsTo(Post::class, 'post_id');
     }

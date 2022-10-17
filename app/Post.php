@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
@@ -20,6 +21,15 @@ class Post extends Model
                 $post->slug = str_slug($post->title,'-');
             }
         });
+
+        static::deleting(function($post) {
+            if( ! App()->runningInConsole() ) {
+                if($post->replies()->count()) {
+                    $post->replies()->delete();
+                }
+            }
+        });
+    
     }
 
     public function getRouteKeyName() {
@@ -34,4 +44,11 @@ class Post extends Model
     public function replies(){
     	return $this->hasMany(Reply::class);
     }
+
+    public function isOwner() {
+        return $this->owner->id === auth()->id();
+        // También es posible ponerlo de la siguiente forma
+        // return $this->owner == auth()->user();
+    }
+    
 }

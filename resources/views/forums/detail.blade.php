@@ -31,6 +31,19 @@
 	                {{ $post->description }}
 	            </div>
 	        </div>
+			
+			@if($post->isOwner())
+				<div class="panel-footer">
+					<form method="POST" action="../posts/{{ $post->slug }}">
+						
+						{{ method_field('DELETE') }}
+						{{ csrf_field() }}
+						<button type="submit" name="deletePost" class="btn btn-danger">
+							{{ __("Eliminar post") }}
+						</button>
+					</form>
+				</div>
+			@endif
     	@empty
 	    <div class="alert alert-danger">
 	        {{ __("No hay ningún post en este momento") }}
@@ -40,6 +53,9 @@
 	@if($posts->count())
 	    {{ $posts->links() }}
 	@endif
+
+
+
 	@Logged()
 		<h3 class="text-muted">{{ __("Añadir un nuevo post al foro :name", ['name' => $forum->name]) }}</h3>
         @include('partials.errors')

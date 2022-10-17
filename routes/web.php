@@ -17,8 +17,9 @@ Route::post('/forums', 'ForumController@store');
 
 Route::get('/posts/{post}', 'PostController@show');
 Route::post('/posts', 'PostController@store');
+Route::delete('/posts/{post}', 'PostController@destroy');
 
 Route::post('/replies', 'ReplyController@store');
-
+Route::delete('/replies/{reply}', 'ReplyController@destroy')->name('replies.delete');
 
 Auth::routes();

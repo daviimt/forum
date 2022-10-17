@@ -18,4 +18,10 @@ class ReplyController extends Controller
 	    return back()->with('message', ['success', __('Respuesta añadida correctamente')]);
 
     }
+
+    public function destroy(Reply $reply) {
+		$reply->delete();
+		return back()->with('message', ['success', __('Respuesta eliminada correctamente')]);
+    }
+
 }
